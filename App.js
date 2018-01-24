@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
+import { StackNavigator } from 'react-navigation';
 
 import store from './store';
 import LoginForm from './LoginForm';
+import WelcomeScreen from './WelcomeScreen';
 
 class App extends Component {
   componentWillMount() {
@@ -21,7 +23,12 @@ class App extends Component {
   }
 
   render() {
-    return <Provider store={store}>{<LoginForm />}</Provider>;
+    const MainNavigator = StackNavigator({
+      main: { screen: LoginForm },
+      welcome: { screen: WelcomeScreen }
+    });
+
+    return <Provider store={store}>{<MainNavigator />}</Provider>;
   }
 }
 
