@@ -7,7 +7,8 @@ import { emailChanged, passwordChanged, loginUser } from './actions';
 
 class LoginForm extends Component {
 	static navigationOptions = {
-		title: 'Aptence'
+		title: 'Aptence',
+		headerLeft: null
 	};
 
 	onEmailChange(text) {
