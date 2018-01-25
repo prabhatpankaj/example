@@ -5,6 +5,7 @@ import {
 	LOGIN_FAILED,
 	LOGGING_IN
 } from '../actions/types';
+import { REHYDRATE } from 'redux-persist/constants';
 
 const INITIAL_STATE = {
 	email: '',
@@ -15,9 +16,9 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-	console.log(action);
-
 	switch (action.type) {
+		case REHYDRATE:
+			return action.payload.auth || [];
 		case EMAIL_CHANGED:
 			return { ...state, email: action.payload };
 		case PASS_CHANGED:
